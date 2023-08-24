@@ -28,7 +28,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: mochawesome-reports
-          path: cypress/reports/mocha
+          path: cypress/reports/html
 
       - name: Upload Screenshots and Videos
         uses: actions/upload-artifact@v2
