@@ -3,7 +3,7 @@ name: Cypress Tests
 on:
   push:
     branches:
-      - main  
+      - main
 
 jobs:
   cypress:
@@ -16,10 +16,13 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 14 
+          node-version: 14
 
       - name: Install dependencies
         run: npm install
+
+      - name: Require cypress-mochawesome-reporter plugin
+        run: node -e "require('cypress-mochawesome-reporter/plugin')({});"
 
       - name: Run Cypress tests
         run: npm run cypress:run
