@@ -11,7 +11,7 @@ describe('E-commerce Login Test Suite', () => {
     LoginPage.visit();
   });
 
-  it('Validate user is able to login with invalid username and password', () => {
+  it('Validate user is not able to login with invalid username and password', () => {
 
     LoginPage.login('username123', 'password234');
     LoginPage.getErrorMessage();
