@@ -11,17 +11,6 @@ class LoginPage {
       cy.get(login.signInButton).click();
     }
 
-    getErrorMessage()
-    {
-      cy.get(login.errorMessage).should('be.visible').and('contain', 'Epic sadface: Username and password do not match any user in this service');
-    }
-
-    getPageTitle()
-    {
-      cy.get(login.pageTitle).should('be.visible').and('contain', 'Swag Labs');
-    }
-
-  }
-  
+}  
   export default new LoginPage();
   
