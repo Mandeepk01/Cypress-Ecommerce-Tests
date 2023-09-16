@@ -12,7 +12,7 @@ describe('E-commerce Login Test Suite', () => {
     LoginPage.visit();
   });
 
-  it('Validate user is able to login with invalid username and password', () => {
+  it('Validate user is not able to login with invalid username and password', () => {
     LoginPage.login('username123', 'password234');
     cy.get(login.errorMessage).should('be.visible').and('contain', 'Epic sadface: Username and password do not match any user in this service');
 
