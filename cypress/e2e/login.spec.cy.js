@@ -15,12 +15,10 @@ describe('E-commerce Login Test Suite', () => {
   it('Validate user is not able to login with invalid username and password', () => {
     LoginPage.login('username123', 'password234');
     cy.get(login.errorMessage).should('be.visible').and('contain', 'Epic sadface: Username and password do not match any user in this service');
-
   })
 
   it('Validate user is able to login with username and password', () => {
     LoginPage.login(username, password);
     cy.get(login.pageTitle).should('be.visible').and('contain', 'Swag Labs');
-
   })
 })
