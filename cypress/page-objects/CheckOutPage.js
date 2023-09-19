@@ -5,7 +5,7 @@ class CheckOutPage {
 
 
   sortByPriceHighToLow() {
-    cy.get(checkout.productSortContainer).select('Price (high to low)');
+    return cy.get(checkout.productSortContainer);
   }
 
   getProductPrices() {
@@ -17,7 +17,7 @@ class CheckOutPage {
   }
 
   goToCart() {
-    cy.get(checkout.shoppingCartLink).click();
+    return cy.get(checkout.shoppingCartLink);
   }
 
   checkout() {
@@ -25,7 +25,7 @@ class CheckOutPage {
   }
 
   cartItem() {
-    cy.get(checkout.cartItem).should('have.length', 2);
+    return cy.get(checkout.cartItem)
   }
 
   fillCheckoutInformation(firstName, lastName, postalCode) {

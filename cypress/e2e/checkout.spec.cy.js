@@ -19,10 +19,10 @@ describe('E-commerce Checkout Test Suite', () => {
         CheckOutPage.addToCart(2); // Add the third item
 
         // Go to cart
-        CheckOutPage.goToCart();
+        CheckOutPage.goToCart().click();
 
         // Verify cart items
-       CheckOutPage.cartItem();
+        CheckOutPage.cartItem().should('have.length', 2);
 
         // Proceed to checkout
         CheckOutPage.checkout();
@@ -42,7 +42,7 @@ describe('E-commerce Checkout Test Suite', () => {
 
     it('Should sort products by price and continue shopping', () => {
         // Call the sortByPriceHighToLow method to sort products by price
-        CheckOutPage.sortByPriceHighToLow();
+        CheckOutPage.sortByPriceHighToLow().select('Price (high to low)');
 
         // Get product prices from the page
         CheckOutPage.getProductPrices().then(prices => {
@@ -59,13 +59,13 @@ describe('E-commerce Checkout Test Suite', () => {
 
             // Compare the original prices and sorted prices arrays
             expect(JSON.stringify(originalPrices)).to.equal(JSON.stringify(sortedPrices));
-            
+
             CheckOutPage.addToCart(0);
-            CheckOutPage.goToCart();
+            CheckOutPage.goToCart().click();
 
             // Click on the "Continue Shopping" button
             CheckOutPage.contineueShopping();
-    
+
             // Verify that the user is redirected back to the products page
             CheckOutPage.getCurrentURL().should('include', '/inventory.html');
         });
