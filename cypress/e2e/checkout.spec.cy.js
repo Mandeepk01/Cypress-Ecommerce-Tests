@@ -3,13 +3,16 @@ import CheckOutPage from '../page-objects/CheckOutPage';
 
 describe('E-commerce Checkout Test Suite', () => {
 
-    const username = Cypress.env('username');
-    const password = Cypress.env('password');
+    let username, password;
+
 
     beforeEach(() => {
         LoginPage.visit();
-        LoginPage.login(username, password);
-
+        cy.sqlServer("select * from user_cred").then(function (result) {
+            username = result[0][0];
+            password = result[0][1];
+            LoginPage.login(username, password);
+        })
     });
 
     it('Should add items to cart and complete checkout', () => {

@@ -9,9 +9,10 @@
   "author": "Mandeep Kaur",
   "license": "ISC",
   "dependencies": {
-    "cypress": "^12.17.4"
+    "cypress": "^13.2.0"
   },
   "devDependencies": {
-    "cypress-mochawesome-reporter": "^3.5.1"
+    "cypress-mochawesome-reporter": "^3.5.1",
+    "cypress-sql-server": "^1.0.0"
   }
 }

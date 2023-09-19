@@ -1,4 +1,5 @@
 const { defineConfig } = require("cypress");
+const sqlServer = require('cypress-sql-server');
 
 module.exports = defineConfig({
   numTestsKeptInMemory: 15,
@@ -16,6 +17,18 @@ module.exports = defineConfig({
 
   e2e: {
     setupNodeEvents(on, config) {
+      config.db = {
+        userName: 'mandeepdb',
+        password: 'Mandeep@1234',
+        server: 'mandeepdb.database.windows.net',
+        options: {
+            database: 'mandeepdb',
+            encrypt: true,
+            rowCollectionOnRequestCompletion : true
+        }
+    }
+      tasks = sqlServer.loadDBPlugin(config.db);
+       on('task', tasks);
       require('cypress-mochawesome-reporter/plugin')(on);
 
       // implement node event listeners here
