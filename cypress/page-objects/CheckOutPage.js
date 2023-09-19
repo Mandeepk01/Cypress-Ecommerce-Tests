@@ -2,8 +2,8 @@
 import checkout from '../selectors/checkout.sel'
 
 class CheckOutPage {
- 
-  
+
+
   sortByPriceHighToLow() {
     cy.get(checkout.productSortContainer).select('Price (high to low)');
   }
@@ -24,8 +24,7 @@ class CheckOutPage {
     cy.get(checkout.checkoutButton).click();
   }
 
-  cartItem()
-  {
+  cartItem() {
     cy.get(checkout.cartItem).should('have.length', 2);
   }
 
@@ -39,9 +38,19 @@ class CheckOutPage {
   completePurchase() {
     cy.get(checkout.cartBtn).click();
   }
-  contineueShopping()
-  {
+  contineueShopping() {
     cy.get(checkout.continueShopping).click();
+  }
+
+  verifyOrderSummary() {
+    return cy.get('.summary_total_label');
+  }
+
+  checkConfirmation() {
+    return cy.get('.complete-header');
+  }
+  getCurrentURL() {
+    return cy.url();
   }
 }
 

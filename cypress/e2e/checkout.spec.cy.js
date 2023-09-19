@@ -31,13 +31,13 @@ describe('E-commerce Checkout Test Suite', () => {
         CheckOutPage.fillCheckoutInformation('John', 'Doe', '12345');
 
         // Verify order summary
-        cy.get('.summary_total_label').should('exist').should('contain', 'Total: $');
+        CheckOutPage.verifyOrderSummary().should('exist').should('contain', 'Total: $');
 
         // Complete the purchase
         CheckOutPage.completePurchase();
 
         // Verify purchase confirmation
-        cy.get('.complete-header').should('contain', 'Thank you for your order!');
+        CheckOutPage.checkConfirmation().should('contain', 'Thank you for your order!');
     });
 
     it('Should sort products by price and continue shopping', () => {
@@ -67,7 +67,7 @@ describe('E-commerce Checkout Test Suite', () => {
             CheckOutPage.contineueShopping();
     
             // Verify that the user is redirected back to the products page
-            cy.url().should('include', '/inventory.html');
+            CheckOutPage.getCurrentURL().should('include', '/inventory.html');
         });
     });
 })
