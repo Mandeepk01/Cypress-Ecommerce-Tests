@@ -1,5 +1,5 @@
 const { defineConfig } = require("cypress");
-const sqlServer = require('cypress-sql-server');
+
 
 module.exports = defineConfig({
   numTestsKeptInMemory: 15,
@@ -27,10 +27,7 @@ module.exports = defineConfig({
             rowCollectionOnRequestCompletion : true
         }
     }
-      tasks = sqlServer.loadDBPlugin(config.db);
-       on('task', tasks);
-      require('cypress-mochawesome-reporter/plugin')(on);
-
+    
       // implement node event listeners here
     },
     baseUrl: 'https://www.saucedemo.com'

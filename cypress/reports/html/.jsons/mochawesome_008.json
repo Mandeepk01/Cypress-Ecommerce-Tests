@@ -1,0 +1,124 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-10-23T19:28:06.898Z",
+    "end": "2023-10-23T19:28:11.311Z",
+    "duration": 4413,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "2fee264b-b5cb-4680-894f-2e9166fa05d7",
+      "title": "",
+      "fullFile": "cypress/e2e/checkout.spec.cy.js",
+      "file": "cypress/checkout.spec.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "0339eaac-eb23-4477-b9ec-f188efabaf70",
+          "title": "E-commerce Checkout Test Suite",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Should add items to cart and complete checkout",
+              "fullTitle": "E-commerce Checkout Test Suite Should add items to cart and complete checkout",
+              "timedOut": null,
+              "duration": 3204,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Add items to cart\n_CheckOutPage.default.addToCart(0); // Add the first item\n_CheckOutPage.default.addToCart(2); // Add the third item\n// Go to cart\n_CheckOutPage.default.goToCart().click();\n// Verify cart items\n_CheckOutPage.default.cartItem().should('have.length', 2);\n// Proceed to checkout\n_CheckOutPage.default.checkout();\n// Fill in checkout information\n_CheckOutPage.default.fillCheckoutInformation('John', 'Doe', '12345');\n// Verify order summary\n_CheckOutPage.default.verifyOrderSummary().should('exist').should('contain', 'Total: $');\n// Complete the purchase\n_CheckOutPage.default.completePurchase();\n// Verify purchase confirmation\n_CheckOutPage.default.checkConfirmation().should('contain', 'Thank you for your order!');",
+              "err": {},
+              "uuid": "6d4c5f5b-8c25-4a87-ad10-3f1440a000b2",
+              "parentUUID": "0339eaac-eb23-4477-b9ec-f188efabaf70",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Should sort products by price and continue shopping",
+              "fullTitle": "E-commerce Checkout Test Suite Should sort products by price and continue shopping",
+              "timedOut": null,
+              "duration": 1168,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Call the sortByPriceHighToLow method to sort products by price\n_CheckOutPage.default.sortByPriceHighToLow().select('Price (high to low)');\n// Get product prices from the page\n_CheckOutPage.default.getProductPrices().then(prices => {\n  // Create an array to store the original prices after converting and parsing\n  const originalPrices = [];\n  // Split the prices string by newline and process each price\n  prices.split('\\n').forEach(price => {\n    originalPrices.push(parseFloat(price.replace('$', '')));\n  });\n  // Create a sorted copy of the original prices array\n  const sortedPrices = [...originalPrices].sort((a, b) => b - a);\n  // Compare the original prices and sorted prices arrays\n  expect(JSON.stringify(originalPrices)).to.equal(JSON.stringify(sortedPrices));\n  _CheckOutPage.default.addToCart(0);\n  _CheckOutPage.default.goToCart().click();\n  // Click on the \"Continue Shopping\" button\n  _CheckOutPage.default.contineueShopping();\n  // Verify that the user is redirected back to the products page\n  _CheckOutPage.default.getCurrentURL().should('include', '/inventory.html');\n});",
+              "err": {},
+              "uuid": "eadca6e5-6ff3-43d7-a581-a31300131708",
+              "parentUUID": "0339eaac-eb23-4477-b9ec-f188efabaf70",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "6d4c5f5b-8c25-4a87-ad10-3f1440a000b2",
+            "eadca6e5-6ff3-43d7-a581-a31300131708"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 4372,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "reportDir": "cypress/reports/html/.jsons"
+      },
+      "version": "6.2.0"
+    }
+  }
+}

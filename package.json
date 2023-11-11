@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "cypress:run": "cypress run"
+    "test": "npx cypress run",
+    "cypress": "cypress"
   },
   "author": "Mandeep Kaur",
   "license": "ISC",

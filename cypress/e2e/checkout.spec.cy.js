@@ -3,17 +3,14 @@ import CheckOutPage from '../page-objects/CheckOutPage';
 
 describe('E-commerce Checkout Test Suite', () => {
 
-    let username, password;
+    const username = Cypress.env('username');
+    const password = Cypress.env('password');
 
 
     beforeEach(() => {
-        LoginPage.visit();
-        cy.sqlServer("select * from user_cred").then(function (result) {
-            username = result[0][0];
-            password = result[0][1];
+            LoginPage.visit();
             LoginPage.login(username, password);
         })
-    });
 
     it('Should add items to cart and complete checkout', () => {
         // Add items to cart
@@ -73,4 +70,5 @@ describe('E-commerce Checkout Test Suite', () => {
             CheckOutPage.getCurrentURL().should('include', '/inventory.html');
         });
     });
+
 })

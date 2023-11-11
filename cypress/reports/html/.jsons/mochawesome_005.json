@@ -1,0 +1,124 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-10-23T19:09:11.648Z",
+    "end": "2023-10-23T19:09:13.341Z",
+    "duration": 1693,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "2cb14340-19eb-47a1-8810-d055be5e99b9",
+      "title": "",
+      "fullFile": "cypress/e2e/login.spec.cy.js",
+      "file": "cypress/login.spec.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "042341a1-b7a0-46c9-a745-5482caa60e3f",
+          "title": "E-commerce Login Test Suite",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Validate user is not able to login with invalid username and password",
+              "fullTitle": "E-commerce Login Test Suite Validate user is not able to login with invalid username and password",
+              "timedOut": null,
+              "duration": 911,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_LoginPage.default.login('username123', 'password234');\n_LoginPage.default.getErrorMessage().should('be.visible').and('contain', 'Epic sadface: Username and password do not match any user in this service');",
+              "err": {},
+              "uuid": "e7aaa201-5bf0-4e03-8130-4c7715736783",
+              "parentUUID": "042341a1-b7a0-46c9-a745-5482caa60e3f",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Validate user is able to login with username and password",
+              "fullTitle": "E-commerce Login Test Suite Validate user is able to login with username and password",
+              "timedOut": null,
+              "duration": 754,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_LoginPage.default.login(username, password);\n_LoginPage.default.getPageTitle().should('be.visible').and('contain', 'Swag Labs');",
+              "err": {},
+              "uuid": "9104ef70-c96a-4b5f-bae3-1993acae68d7",
+              "parentUUID": "042341a1-b7a0-46c9-a745-5482caa60e3f",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "e7aaa201-5bf0-4e03-8130-4c7715736783",
+            "9104ef70-c96a-4b5f-bae3-1993acae68d7"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1665,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "reportDir": "cypress/reports/html/.jsons"
+      },
+      "version": "6.2.0"
+    }
+  }
+}
